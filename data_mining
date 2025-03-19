@@ -1,3 +1,6 @@
+4. data_mining/kmeans_iris.py
+목표: Scikit-learn을 활용해 Iris 데이터셋에 대해 K-Means 클러스터링을 수행하고, 결과를 시각화
+
 from sklearn import datasets
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
