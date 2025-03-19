@@ -1,0 +1,19 @@
+from sklearn import datasets
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+# Iris 데이터셋 로드
+iris = datasets.load_iris()
+X = iris.data
+
+# K-Means 클러스터링 (클러스터 수: 3)
+kmeans = KMeans(n_clusters=3, random_state=42)
+kmeans.fit(X)
+labels = kmeans.labels_
+
+# 첫 두 특성(꽃받침 길이, 꽃받침 너비)으로 클러스터링 결과 시각화
+plt.scatter(X[:,0], X[:,1], c=labels, cmap='viridis')
+plt.title("K-Means Clustering on Iris Dataset")
+plt.xlabel("Sepal length")
+plt.ylabel("Sepal width")
+plt.show()
