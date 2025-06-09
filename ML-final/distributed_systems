@@ -1,0 +1,18 @@
+##1. distributed_systems/distributed_example.py
+목표: Python의 분산 컴퓨팅 라이브러리(Ray)를 사용하여 간단한 병렬 처리 예제를 구현##
+
+import ray
+
+# Ray 초기화
+ray.init()
+
+@ray.remote
+def compute_square(x):
+    return x * x
+
+if __name__ == "__main__":
+    numbers = list(range(10))
+    # 각 숫자에 대해 원격 함수를 호출하여 제곱값 계산
+    futures = [compute_square.remote(x) for x in numbers]
+    results = ray.get(futures)
+    print("Squares:", results)
