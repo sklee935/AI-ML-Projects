@@ -1,0 +1,21 @@
+###2. optimization/gradient_descent.py
+목표: 기울기 하강법(Gradient Descent)을 활용해 간단한 최적화 문제(예: f(x) = (x-3)²)의 최소값을 찾는 코드##
+import numpy as np
+
+def f(x):
+    return (x - 3) ** 2
+
+def f_prime(x):
+    return 2 * (x - 3)
+
+def gradient_descent(initial_x, learning_rate, num_iterations):
+    x = initial_x
+    for i in range(num_iterations):
+        grad = f_prime(x)
+        x = x - learning_rate * grad
+        print(f"Iteration {i+1}: x = {x}, f(x) = {f(x)}")
+    return x
+
+if __name__ == "__main__":
+    optimum = gradient_descent(initial_x=0.0, learning_rate=0.1, num_iterations=20)
+    print("Optimized x:", optimum)
